@@ -3,3 +3,6 @@ body {
   background: #eeeeee;
   color: black;
 }
+form {
+  text-align: right;
+}

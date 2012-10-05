@@ -9,10 +9,10 @@
  %body
   - if @alert
    .alert= @alert
-  %form.form-inline{action: '/create', enctype: 'multipart/form-data', method: 'post'}
+  %form.form-inline{action: '/create', enctype: 'multipart/form-data', method: 'post', target: '_top'}
    %p
     %span.icon-folder-open
-    %input{name: 'file', type: 'file', size: 60, required: true}
+    %input{name: 'file', type: 'file', required: true}
     %span.icon-pencil
-    %input{name: 'caption', type: 'text', size: 60, autocomplete: 'off', placeholder: '画像の説明', maxlength: 200}
-    %button.btn Go!
+    %input{name: 'caption', type: 'text', autocomplete: 'off', placeholder: '画像の説明', maxlength: 200}
+    %button.btn アップロード
