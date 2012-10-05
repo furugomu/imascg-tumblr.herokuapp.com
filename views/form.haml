@@ -1,0 +1,18 @@
+!!!
+%html
+ %head
+  %meta{charset:'UTF-8'}
+  %title imas cg
+  %link{rel: 'stylesheet', href: '/bootstrap/css/bootstrap.min.css'}
+  %link{rel: 'stylesheet', href: '/style.css'}
+  %script{src: '/bootstrap/js/bootstrap.min.js'}
+ %body
+  - if @alert
+   .alert= @alert
+  %form.form-inline{action: '/create', enctype: 'multipart/form-data', method: 'post'}
+   %p
+    %span.icon-folder-open
+    %input{name: 'file', type: 'file', size: 60, required: true}
+    %span.icon-pencil
+    %input{name: 'caption', type: 'text', size: 60, autocomplete: 'off', placeholder: '画像の説明', maxlength: 200}
+    %button.btn Go!
