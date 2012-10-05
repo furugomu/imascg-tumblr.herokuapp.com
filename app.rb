@@ -17,6 +17,10 @@ class App < Sinatra::Base
     end
   end
 
+  before do
+    response['X-Frame-Options'] = ''
+  end
+
   get '/' do
     haml :form
   end
