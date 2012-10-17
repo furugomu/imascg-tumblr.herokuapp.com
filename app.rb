@@ -28,10 +28,21 @@ class App < Sinatra::Base
   post '/create' do
     client = Tumblife.client
     begin
-      result = client.create_post(settings.blog,
-        type: 'photo',
-        caption: escape_html(params[:caption]),
-        data: params[:file][:tempfile].read)
+      if params[:file] && params[:file][:tempfile]
+        # アップロード
+        result = client.photo(settings.blog,
+          caption: escape_html(params[:caption]),
+          data: params[:file][:tempfile].read)
+      elsif params[:url] && params[:url].size > 0
+        # URL
+        result = client.photo(settings.blog,
+          caption: escape_html(params[:caption]),
+          source: params[:url])
+      else
+        @alert = '失敗した'
+        haml :form
+        return
+      end
       # できた投稿にリダイレクトする
       post = client.posts(settings.blog, id: result.id).posts[0]
       redirect post.post_url

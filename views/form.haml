@@ -5,16 +5,26 @@
   %title imas cg
   %link{rel: 'stylesheet', href: '/bootstrap/css/bootstrap.min.css'}
   %link{rel: 'stylesheet', href: '/style.css'}
+  %script{src: '/jquery.min.js'}
   %script{src: '/bootstrap/js/bootstrap.min.js'}
+  %script{src: '/script.js'}
  %body
   - if @alert
    .alert= @alert
   %form.form-inline{action: '/create', enctype: 'multipart/form-data', method: 'post', target: '_top'}
+   %p.tabs
+    %a.active{href: '#file'} ファイルをアップロード
+    |
+    %a{href: '#url'} URL を貼り付け
    %p
-    %label
-     %span.icon-folder-open
-     5MBまで
-     %input{name: 'file', type: 'file', required: true}
+    %span
+     %label#file
+      %span.icon-folder-open
+      5MB まで
+      %input{name: 'file', type: 'file', required: true}
+     %label#url{style: 'display:none'}
+      %span.icon-globe
+      %input{name: 'url', type: 'text', placeholder: 'http://'}
     %label
      %span.icon-pencil
      %input{name: 'caption', type: 'text', autocomplete: 'off', placeholder: '画像の説明', maxlength: 200}
